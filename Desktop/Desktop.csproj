@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E210BD7C-CF1C-4694-8010-1A333DECE66F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Desktop</RootNamespace>
+    <AssemblyName>Desktop</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MonoGamePlatform>DesktopGL</MonoGamePlatform>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;LINUX</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
+    <DefineConstants>TRACE;LINUX</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Express\Graphics\AnimatedSprite.cs" />
+    <Compile Include="Express\Graphics\AnimatedSpriteFrame.cs" />
+    <Compile Include="Express\Graphics\GameRenderer.cs" />
+    <Compile Include="Express\Graphics\DebugRenderer.cs" />
+    <Compile Include="Express\Graphics\Primitives2D.cs" />
+    <Compile Include="Express\Graphics\Sprite.cs" />
+    <Compile Include="Express\Math\AAHalfPlane.cs" />
+    <Compile Include="Express\Math\ConvexPolygon.cs" />
+    <Compile Include="Express\Math\HalfPlane.cs" />
+    <Compile Include="Express\Math\MathEnums.cs" />
+    <Compile Include="Express\Physics\AARectangleAAHalfPlaneCollision.cs" />
+    <Compile Include="Express\Physics\AARectangleAARectangleCollision.cs" />
+    <Compile Include="Express\Physics\Collision.cs" />
+    <Compile Include="Express\Physics\CollisionAlgorithm.cs" />
+    <Compile Include="Express\Physics\ICollisionAlgorithm.cs" />
+    <Compile Include="Express\Physics\MovementPhysics.cs" />
+    <Compile Include="Express\Physics\ParticleAARectangleCollision.cs" />
+    <Compile Include="Express\Physics\ParticleAAHalfPlaneCollision.cs" />
+    <Compile Include="Express\Physics\ParticleHalfPlaneCollision.cs" />
+    <Compile Include="Express\Physics\ParticleParticleCollision.cs" />
+    <Compile Include="Express\Physics\PhysicsBasicEngine.cs" />
+    <Compile Include="Express\Scene\IScene.cs" />
+    <Compile Include="Express\Scene\Objects\IAngularVelocity.cs" />
+    <Compile Include="Express\Scene\Objects\IAngularMass.cs" />
+    <Compile Include="Express\Scene\Objects\ICircle.cs" />
+    <Compile Include="Express\Scene\Objects\IAARectangleCollider.cs" />
+    <Compile Include="Express\Scene\Objects\IAARectangle.cs" />
+    <Compile Include="Express\Scene\Objects\IAAHalfPlaneCollider.cs" />
+    <Compile Include="Express\Scene\Objects\ICoefficientOfFriction.cs" />
+    <Compile Include="Express\Scene\Objects\ICoefficientOfRestitution.cs" />
+    <Compile Include="Express\Scene\Objects\IConvexCollider.cs" />
+    <Compile Include="Express\Scene\Objects\ICustomUpdate.cs" />
+    <Compile Include="Express\Scene\Objects\IDrawableSceneObject.cs" />
+    <Compile Include="Express\Scene\Objects\IHalfPlaneCollider.cs" />
+    <Compile Include="Express\Scene\Objects\ICustomCollider.cs" />
+    <Compile Include="Express\Scene\Objects\ILifetime.cs" />
+    <Compile Include="Express\Scene\Objects\IRotatable.cs" />
+    <Compile Include="Express\Scene\Objects\IRectangleCollider.cs" />
+    <Compile Include="Express\Scene\Objects\ISceneUser.cs" />
+    <Compile Include="Express\Scene\Objects\IRotation.cs" />
+    <Compile Include="Express\Scene\Objects\IRectangleSize.cs" />
+    <Compile Include="Express\Scene\Objects\IParticleCollider.cs" />
+    <Compile Include="Express\Scene\Objects\IParticle.cs" />
+    <Compile Include="Express\Scene\Objects\IMovable.cs" />
+    <Compile Include="Express\Scene\Objects\IRadius.cs" />
+    <Compile Include="Express\Scene\Objects\IPosition.cs" />
+    <Compile Include="Express\Scene\Objects\IVelocity.cs" />
+    <Compile Include="Express\Scene\Objects\IMass.cs" />
+    <Compile Include="Express\Scene\Objects\Lifetime.cs" />
+    <Compile Include="Express\Scene\SceneEventArgs.cs" />
+    <Compile Include="Express\Scene\SimpleScene.cs" />
+    <Compile Include="Game1.cs" />
+    <Compile Include="GameCode\Input\DesktopInput.cs" />
+    <Compile Include="GameCode\Input\IPlayerInput.cs" />
+    <Compile Include="GameCode\Levels\Level1.cs" />
+    <Compile Include="GameCode\Units\MeleeStudent.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon.ico" />
+    <EmbeddedResource Include="Icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="Content\Content.mgcb" />
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\SDL2.dll">
+      <Link>x86\SDL2.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\SDL2.dll">
+      <Link>x64\SDL2.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\soft_oal.dll">
+      <Link>x86\soft_oal.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\soft_oal.dll">
+      <Link>x64\soft_oal.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\libSDL2-2.0.so.0">
+      <Link>x86\libSDL2-2.0.so.0</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\libSDL2-2.0.so.0">
+      <Link>x64\libSDL2-2.0.so.0</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\libopenal.so.1">
+      <Link>x86\libopenal.so.1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\libopenal.so.1">
+      <Link>x64\libopenal.so.1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\libSDL2-2.0.0.dylib">
+      <Link>libSDL2-2.0.0.dylib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\libopenal.1.dylib">
+      <Link>libopenal.1.dylib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll.config">
+      <Link>MonoGame.Framework.dll.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="app.manifest" />
+    <None Include="Express\Physics\ParticleConvexCollision.m" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Express\Physics\ParticleConvexCollision.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GameCode\Components\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
