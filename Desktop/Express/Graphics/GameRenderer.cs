@@ -39,9 +39,12 @@ namespace TINRGame.Components
                     {
                         spriteBatch.Draw(obj.Sprite.texture, 
                             obj.DestinationRectangle, 
-                            obj.Sprite.sourceRectangle, 
-                            Color.White);
-
+                            obj.Sprite.sourceRectangle,
+                            obj.Color,
+                            obj.Roataion,
+                            obj.Sprite.origin,
+                            obj.SpriteEffect,
+                            obj.LayerDepth);
                     }
             }
             spriteBatch.End();

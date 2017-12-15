@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Desktop.Express.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Units
 {
@@ -32,5 +33,10 @@ namespace Units
         public Vector2 Velocity { get; set; }
         public float Width { get; set; }
         public float Height { get; set; }
+        public float Roataion { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Color Color { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public float Scale { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public SpriteEffects SpriteEffect { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public float LayerDepth { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Desktop.GameCode;
+using Desktop.GameCode.Levels;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using TINRGame.Components;
@@ -12,7 +14,8 @@ namespace Desktop
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Level1 level1;
+        GamePlay gam;
+        Level testLevel;
         
         public Game1()
         {
@@ -32,8 +35,18 @@ namespace Desktop
             this.IsMouseVisible = true;
             this.IsFixedTimeStep = true;
 
-            level1 = new Level1(this, null);
-            Components.Add(level1);
+            graphics.PreferredBackBufferWidth = 640;
+            graphics.PreferredBackBufferHeight = 360;
+
+            //graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
+            //graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
+            //Window.Position = Point.Zero;
+            //Window.IsBorderless = true;
+            graphics.ApplyChanges();
+
+            testLevel = new Level(this);
+            gam = new GamePlay(this, null, testLevel);
+            Components.Add(gam);
 
             base.Initialize();
         }

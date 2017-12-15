@@ -1,5 +1,6 @@
 ﻿using Desktop.Express.Graphics;
 using Desktop.Express.Scene;
+using Desktop.GameCode.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -13,6 +14,8 @@ namespace Desktop.GameCode
 {
     class GamePlay : GameComponent
     {
+        Vector2 targetResolution = new Vector2(1366, 768);
+
         IScene scene;
         IPlayerInput playerInput;
 
@@ -20,9 +23,11 @@ namespace Desktop.GameCode
         DebugRenderer debugRenderer;
         Camera2D camera;
         PhysicsBasicEngine phys;
+        Level level;
 
-        public GamePlay(Game game, IPlayerInput _playerInput) : base(game)
+        public GamePlay(Game game, IPlayerInput _playerInput, Level level) : base(game)
         {
+            this.level = level;
             playerInput = _playerInput;
             scene = new SimpleScene(game);
         }
@@ -30,6 +35,11 @@ namespace Desktop.GameCode
         public override void Initialize()
         {
             camera = new Camera2D(Game.GraphicsDevice.Viewport);
+            // TODO: Stretch to fit only y axsis, then left and right scroll
+            camera.Stretch = new Vector2(
+                    Game.GraphicsDevice.Viewport.Width / targetResolution.X,
+                    Game.GraphicsDevice.Viewport.Height / targetResolution.Y
+                );
             gameRenderer = new GameRenderer(Game, scene, camera);
             phys = new PhysicsBasicEngine(Game, scene);
             debugRenderer = new DebugRenderer(Game, scene, camera);
@@ -38,6 +48,8 @@ namespace Desktop.GameCode
             Game.Components.Add(debugRenderer);
             Game.Components.Add(gameRenderer);
             Game.Components.Add(phys);
+
+            level.InitLevel(scene);
             base.Initialize();
         }
 
@@ -86,6 +98,7 @@ namespace Desktop.GameCode
             Game.Components.Remove(debugRenderer);
             Game.Components.Remove(gameRenderer);
             Game.Components.Remove(phys);
+            level.Dispose();
             base.Dispose(disposing);
         }
     }

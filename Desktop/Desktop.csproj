@@ -104,7 +104,9 @@
     <Compile Include="GameCode\Units\BasicUnit.cs" />
     <Compile Include="GameCode\Units\MeleeStudent.cs" />
     <Compile Include="GameCode\Units\PlayerBase.cs" />
+    <Compile Include="GameCode\Util\SpriteMaker.cs" />
     <Compile Include="GameCode\Util\StaticDrawable.cs" />
+    <Compile Include="GameCode\Util\TextureLoader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
