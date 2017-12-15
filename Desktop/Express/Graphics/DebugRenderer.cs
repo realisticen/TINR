@@ -1,4 +1,5 @@
-﻿using Desktop.Express.Scene;
+﻿using Desktop.Express.Graphics;
+using Desktop.Express.Scene;
 using Desktop.Express.Scene.Objects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -21,23 +22,23 @@ namespace TINRGame.Components
         public DepthStencilState depthStencilState = DepthStencilState.Default;
         public RasterizerState rasterizerState = RasterizerState.CullClockwise;
         public Effect effect;
-        public Matrix transformatinMatrix;
+        public Camera2D camera;
 
         IScene scene;
         SpriteBatch spriteBatch;
-        public DebugRenderer(Game game, IScene scene) : base(game)
+        public DebugRenderer(Game game, IScene scene, Camera2D camera) : base(game)
         {
             this.scene = scene;
+            this.camera = camera;
             spriteBatch = new SpriteBatch(Game.GraphicsDevice);
             itemColor = Color.White;
             movmentColor = Color.SkyBlue;
             colliderColor = Color.Lime;
-            transformatinMatrix = Matrix.Identity;
         }
 
         public override void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin();
+            spriteBatch.Begin(transformMatrix: camera.ViewMatrix);
             foreach (object o in scene.sceneObjects)
             {
                 if (o is IParticleCollider circle)

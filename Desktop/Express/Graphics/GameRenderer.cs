@@ -1,4 +1,5 @@
-﻿using Desktop.Express.Scene;
+﻿using Desktop.Express.Graphics;
+using Desktop.Express.Scene;
 using Desktop.Express.Scene.Objects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -17,25 +18,31 @@ namespace TINRGame.Components
         public DepthStencilState depthStencilState = DepthStencilState.Default;
         public RasterizerState rasterizerState = RasterizerState.CullClockwise;
         public Effect effect;
-        public Matrix transformatinMatrix;
+        public Camera2D camera;
 
         IScene scene;
         SpriteBatch spriteBatch;
-        public GameRenderer(Game game, IScene scene) : base(game)
+        public GameRenderer(Game game, IScene scene, Camera2D camera) : base(game)
         {
             this.scene = scene;
+            this.camera = camera;
             spriteBatch = new SpriteBatch(Game.GraphicsDevice);
-            transformatinMatrix = Matrix.Identity;
         }
 
         public override void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin();
+            spriteBatch.Begin(transformMatrix:camera.ViewMatrix);
             foreach (object o in scene.sceneObjects)
             {
                 if (o is IDrawableSceneObject obj)
-                    if(obj.Visible)
-                        spriteBatch.Draw(obj.Sprite.texture, obj.DestinationRectangle, obj.Sprite.sourceRectangle, Color.White);
+                    if (obj.Visible)
+                    {
+                        spriteBatch.Draw(obj.Sprite.texture, 
+                            obj.DestinationRectangle, 
+                            obj.Sprite.sourceRectangle, 
+                            Color.White);
+
+                    }
             }
             spriteBatch.End();
             base.Draw(gameTime);

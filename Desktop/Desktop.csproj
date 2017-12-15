@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Express\Graphics\AnimatedSprite.cs" />
     <Compile Include="Express\Graphics\AnimatedSpriteFrame.cs" />
+    <Compile Include="Express\Graphics\Camera2D.cs" />
     <Compile Include="Express\Graphics\GameRenderer.cs" />
     <Compile Include="Express\Graphics\DebugRenderer.cs" />
     <Compile Include="Express\Graphics\Primitives2D.cs" />
@@ -94,10 +95,16 @@
     <Compile Include="Express\Scene\SceneEventArgs.cs" />
     <Compile Include="Express\Scene\SimpleScene.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="GameCode\Components\UnitSpawner.cs" />
+    <Compile Include="GameCode\GamePlay.cs" />
     <Compile Include="GameCode\Input\DesktopInput.cs" />
     <Compile Include="GameCode\Input\IPlayerInput.cs" />
+    <Compile Include="GameCode\Levels\Level.cs" />
     <Compile Include="GameCode\Levels\Level1.cs" />
+    <Compile Include="GameCode\Units\BasicUnit.cs" />
     <Compile Include="GameCode\Units\MeleeStudent.cs" />
+    <Compile Include="GameCode\Units\PlayerBase.cs" />
+    <Compile Include="GameCode\Util\StaticDrawable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -165,7 +172,7 @@
     <Content Include="Express\Physics\ParticleConvexCollision.h" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="GameCode\Components\" />
+    <Folder Include="GameCode\GamePlayRules\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
