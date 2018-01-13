@@ -1,4 +1,5 @@
 ﻿using Desktop.Express.Graphics;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -8,13 +9,20 @@ using System.Threading.Tasks;
 
 namespace Desktop.GameCode.Util
 {
-    static class SpriteMaker
+    class SpriteMaker
     {
-        public static Sprite CreateBasicSprite(Texture2D tex)
-        {
-            Sprite sprite = new Sprite(tex);
+        private Texture2D _atlas;
+        private Dictionary<string, Rectangle> _positions;
 
-            return sprite;
+        public SpriteMaker(Texture2D atlas, Dictionary<string, Rectangle> positions)
+        {
+            _atlas = atlas;
+            _positions = positions;
+        }
+
+        public Sprite getSprite(string name)
+        {
+            return new Sprite(_atlas, _positions[name]);
         }
     }
 }

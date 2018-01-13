@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+<Asset Type="System.Collections.Generic.Dictionary[System.String, Microsoft.Xna.Framework.Rectangle]">
+<Item><Key>Dead (1)</Key><Value>0 0 944 751</Value></Item>
+<Item><Key>Dead (10)</Key><Value>944 0 944 751</Value></Item>
+<Item><Key>Dead (2)</Key><Value>0 751 944 751</Value></Item>
+<Item><Key>Dead (3)</Key><Value>944 751 944 751</Value></Item>
+<Item><Key>Dead (4)</Key><Value>1888 0 944 751</Value></Item>
+<Item><Key>Dead (5)</Key><Value>1888 751 944 751</Value></Item>
+<Item><Key>Dead (6)</Key><Value>2832 0 944 751</Value></Item>
+<Item><Key>Dead (7)</Key><Value>2832 751 944 751</Value></Item>
+<Item><Key>Dead (8)</Key><Value>0 1502 944 751</Value></Item>
+<Item><Key>Dead (9)</Key><Value>0 2253 944 751</Value></Item>
+<Item><Key>Attack (1)</Key><Value>944 1502 587 707</Value></Item>
+<Item><Key>Attack (10)</Key><Value>1531 1502 587 707</Value></Item>
+<Item><Key>Attack (2)</Key><Value>944 2209 587 707</Value></Item>
+<Item><Key>Attack (3)</Key><Value>2118 1502 587 707</Value></Item>
+<Item><Key>Attack (4)</Key><Value>1531 2209 587 707</Value></Item>
+<Item><Key>Attack (5)</Key><Value>944 2916 587 707</Value></Item>
+<Item><Key>Attack (6)</Key><Value>2705 1502 587 707</Value></Item>
+<Item><Key>Attack (7)</Key><Value>2118 2209 587 707</Value></Item>
+<Item><Key>Attack (8)</Key><Value>1531 2916 587 707</Value></Item>
+<Item><Key>Attack (9)</Key><Value>3292 1502 587 707</Value></Item>
+<Item><Key>Idle (1)</Key><Value>2705 2209 587 707</Value></Item>
+<Item><Key>Idle (10)</Key><Value>2118 2916 587 707</Value></Item>
+<Item><Key>Idle (2)</Key><Value>3292 2209 587 707</Value></Item>
+<Item><Key>Idle (3)</Key><Value>2705 2916 587 707</Value></Item>
+<Item><Key>Idle (4)</Key><Value>3292 2916 587 707</Value></Item>
+<Item><Key>Idle (5)</Key><Value>3776 0 587 707</Value></Item>
+<Item><Key>Idle (6)</Key><Value>4363 0 587 707</Value></Item>
+<Item><Key>Idle (7)</Key><Value>3776 707 587 707</Value></Item>
+<Item><Key>Idle (8)</Key><Value>4950 0 587 707</Value></Item>
+<Item><Key>Idle (9)</Key><Value>4363 707 587 707</Value></Item>
+<Item><Key>Walk (1)</Key><Value>3879 1414 587 707</Value></Item>
+<Item><Key>Walk (10)</Key><Value>4950 707 587 707</Value></Item>
+<Item><Key>Walk (2)</Key><Value>4466 1414 587 707</Value></Item>
+<Item><Key>Walk (3)</Key><Value>3879 2121 587 707</Value></Item>
+<Item><Key>Walk (4)</Key><Value>5053 1414 587 707</Value></Item>
+<Item><Key>Walk (5)</Key><Value>4466 2121 587 707</Value></Item>
+<Item><Key>Walk (6)</Key><Value>3879 2828 587 707</Value></Item>
+<Item><Key>Walk (7)</Key><Value>5053 2121 587 707</Value></Item>
+<Item><Key>Walk (8)</Key><Value>4466 2828 587 707</Value></Item>
+<Item><Key>Walk (9)</Key><Value>5053 2828 587 707</Value></Item>
+<Item><Key>base</Key><Value>0 3004 250 500</Value></Item>
+<Item><Key>book</Key><Value>250 3004 200 200</Value></Item>
+<Item><Key>goldCoin1</Key><Value>250 3204 32 32</Value></Item>
+<Item><Key>goldCoin2</Key><Value>450 3004 32 32</Value></Item>
+<Item><Key>goldCoin3</Key><Value>482 3004 32 32</Value></Item>
+<Item><Key>goldCoin4</Key><Value>250 3236 32 32</Value></Item>
+<Item><Key>goldCoin5</Key><Value>450 3036 32 32</Value></Item>
+<Item><Key>goldCoin6</Key><Value>282 3204 32 32</Value></Item>
+<Item><Key>goldCoin7</Key><Value>0 3504 32 32</Value></Item>
+<Item><Key>goldCoin8</Key><Value>282 3236 32 32</Value></Item>
+<Item><Key>goldCoin9</Key><Value>482 3036 32 32</Value></Item>
+</Asset>
+</XnaContent>

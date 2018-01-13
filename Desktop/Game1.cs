@@ -1,8 +1,10 @@
 ﻿using Desktop.GameCode;
 using Desktop.GameCode.Levels;
+using Desktop.GameCode.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using TINRGame.BasicClasses;
 using TINRGame.Components;
 
 namespace Desktop
@@ -44,8 +46,10 @@ namespace Desktop
             //Window.IsBorderless = true;
             graphics.ApplyChanges();
 
-            testLevel = new Level(this);
-            gam = new GamePlay(this, null, testLevel);
+            TextureLoader.Device = graphics.GraphicsDevice;
+
+            testLevel = new Level1(this);
+            gam = new GamePlay(this, new DesktopInput(Window), testLevel);
             Components.Add(gam);
 
             base.Initialize();
@@ -59,6 +63,7 @@ namespace Desktop
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            SoundEngine.LoadSounds(Content);
 
             // TODO: use this.Content to load your game content here
         }

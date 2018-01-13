@@ -9,28 +9,16 @@ using Microsoft.Xna.Framework.Input;
 
 namespace TINRGame.BasicClasses
 {
-    class DesktopInput : IPlayerInput
+    class DesktopInput : IUserInput
     {
-        bool[] IPlayerInput.events => _events;
+        public Point mousePosition => Mouse.GetState(Window).Position;
+        public bool MousePressed => Mouse.GetState(Window).LeftButton == ButtonState.Pressed;
 
-        public Vector2 mousePosition => Mouse.GetState(game.Window).Position.ToVector2();
+        public GameWindow Window;
 
-        private bool[] _events = new bool[Enum.GetNames(typeof(PlayerInputEvent)).Length];
-
-        public bool playerMousePress()
+        public DesktopInput(GameWindow window)
         {
-            return Mouse.GetState(game.Window).LeftButton == ButtonState.Pressed;
-        }
-
-        public void Update(GameTime gameTime)
-        {
-            throw new NotImplementedException();
-        }
-
-        Game game;
-        public DesktopInput(Game _game)
-        {
-            game = _game;
+            Window = window;
         }
     }
 }

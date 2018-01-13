@@ -28,11 +28,16 @@ namespace TINRGame.Components
                     MovementPhysics.simulateMovement(movable, gameTime);
                 if (obj is IRotatable rotatable)
                     MovementPhysics.simulateMovement(rotatable, gameTime);
+                if (obj is ICustomUpdate updatable)
+                    updatable.updateWithGameTime(gameTime);
             }
 
-            for (int i = 1; i < scene.sceneObjects.Count; i++)
+            for (int i = 0; i < scene.sceneObjects.Count + 1; i++)
             {
-                Collision.collisionBetween(scene.sceneObjects[i-1], scene.sceneObjects[i]);
+                for (int j = i+1; j < scene.sceneObjects.Count; j++)
+                {
+                    Collision.collisionBetween(scene.sceneObjects[i], scene.sceneObjects[j]);
+                }
             }
 
             base.Update(gameTime);

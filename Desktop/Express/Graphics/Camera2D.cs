@@ -62,10 +62,16 @@ namespace Desktop.Express.Graphics
         {
             _dirty = false;
             _viewMatrix = Matrix.CreateTranslation(new Vector3(_position, 0.0f)) *
+                          Matrix.CreateScale(new Vector3(_stretch, 1)) *
                           Matrix.CreateTranslation(new Vector3(-_origin, 0.0f)) *
                           Matrix.CreateRotationZ(_rotation) *
-                          Matrix.CreateTranslation(new Vector3(_origin, 0.0f)) *
-                          Matrix.CreateScale(new Vector3(_stretch, 1));
+                          Matrix.CreateTranslation(new Vector3(_origin, 0.0f));
+        }
+
+        public static Point ToCamera(Point screenPosition, Matrix viewMatrix, Vector2 cameraPos)
+        {
+            var v = Vector2.Transform(new Vector2(screenPosition.X, screenPosition.Y) - cameraPos, Matrix.Invert(viewMatrix));
+            return new Point((int)v.X, (int)v.Y);
         }
     }
 }

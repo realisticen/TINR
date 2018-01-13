@@ -143,7 +143,7 @@ namespace Desktop.Express.Physics
             if(item1 is IMass m1)
                 mass1inverse = 1.0f / m1.Mass;
             float mass2inverse = 0;
-                if (item2 is IMass m2)
+            if (item2 is IMass m2)
                 mass1inverse = 1.0f / m2.Mass;
 
             IAngularMass item1WithAngularMass = item1 as IAngularMass;

@@ -7,36 +7,127 @@ using System.Threading.Tasks;
 using Desktop.Express.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Desktop.GameCode.Units;
+using TINRGame;
+using Desktop.GameCode.Util;
+using System.Diagnostics;
 
 namespace Units
 {
-    class MeleeStudent : IDrawableSceneObject, IMovable, IAARectangleCollider
+    class MeleeStudent : BasicUnit, ICustomUpdate
     {
-        private Sprite _sprite;
-        public MeleeStudent(Sprite sprite)
+        public static MeleeStudent GetMeleeStudent(SpriteMaker maker)
         {
-            _sprite = sprite;
-            this.Velocity = new Vector2(100, 0);
-            this.Position = new Vector2(100, 100);
-            this.Visible = true;
-            this.Height = (_sprite.sourceRectangle.Size.ToVector2() / 4).Y;
-            this.Width = (_sprite.sourceRectangle.Size.ToVector2() / 4).X;
+            AnimatedSprite walk = new AnimatedSprite(true);
+            AnimatedSprite idle = new AnimatedSprite(true);
+            AnimatedSprite attack = new AnimatedSprite(true);
+            AnimatedSprite death = new AnimatedSprite(false);
+            for (int i = 1; i < 11; i++)
+                walk.addFrame(new AnimatedSpriteFrame(maker.getSprite("Walk ("+i+")"), 50));
+            for (int i = 1; i < 11; i++)
+                idle.addFrame(new AnimatedSpriteFrame(maker.getSprite("Idle (" + i + ")"), 50));
+            for (int i = 1; i < 11; i++)
+                attack.addFrame(new AnimatedSpriteFrame(maker.getSprite("Attack (" + i + ")"), 50));
+            for (int i = 1; i < 11; i++)
+                death.addFrame(new AnimatedSpriteFrame(maker.getSprite("Dead (" + i + ")"), 100));
+
+            death.spriteOnStop = 9;
+            MeleeStudent unit = new MeleeStudent();
+            unit._walk = walk;
+            unit._idle = idle;
+            unit._attack = attack;
+            unit._death = death;
+            unit._state = UnitState.WALKING;
+            return unit;
         }
 
-        public Sprite Sprite => _sprite;
+        public override Rectangle DestinationRectangle { get => new Rectangle(Position.ToPoint(), new Point((int)Width, (int)Height)); }
+        private Vector2 speed = new Vector2(120, 0);
+        public MeleeStudent()
+        {
+            Health = 5;
+            Width = 118 * 2;
+            Height = 142 * 2;
+            Velocity = speed;
+        }
 
-        public bool Visible { get; set; }
+        public void ChangeDirection()
+        {
+            speed *= -1;
+            Velocity = speed;
 
-        public Rectangle DestinationRectangle => new Rectangle(Position.ToPoint(), (_sprite.sourceRectangle.Size.ToVector2() / 4).ToPoint());
+            if (SpriteEffect == SpriteEffects.FlipHorizontally)
+                SpriteEffect = SpriteEffects.None;
+            else 
+                SpriteEffect = SpriteEffects.FlipHorizontally;
+        }
 
-        public Vector2 Position { get; set; }
-        public Vector2 Velocity { get; set; }
-        public float Width { get; set; }
-        public float Height { get; set; }
-        public float Roataion { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Color Color { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public float Scale { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public SpriteEffects SpriteEffect { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public float LayerDepth { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        private IUnit collidedWith;
+        public override void collidedWithItem(object o)
+        {
+            if (_state == UnitState.ATTACKING)
+                return;
+
+            if(o is IUnit unit)
+            {
+                if (unit.Owner == Owner)
+                {
+                    if (!((Position.X - unit.Position.X) * speed.X < 0))
+                        return;
+
+                    if (unit.State != UnitState.WALKING)
+                    {
+                        collidedWith = unit;
+                        _state = UnitState.IDLE;
+                        Velocity = Vector2.Zero;
+                    }
+                }
+                else if (!unit.Dead)
+                {
+                    collidedWith = unit;
+                    _state = UnitState.ATTACKING;
+                    Velocity = Vector2.Zero;
+                }
+            }
+        }
+
+        public override bool collidingWithItem(object o)
+        {
+            if (Dead)
+                return false;
+            return true;
+        }
+
+        public void updateWithGameTime(GameTime gameTime)
+        {
+            if (Dead && _state != UnitState.DYING)
+            {
+                _state = UnitState.DYING;
+                Velocity = Vector2.Zero;
+                Position += new Vector2(0, _attack.getFirstFrame().sourceRectangle.Height - _death.getFirstFrame().sourceRectangle.Height);
+            }
+            else if (_state == UnitState.ATTACKING)
+            {
+                Velocity = Vector2.Zero;
+                collidedWith.Health -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (collidedWith.Dead)
+                {
+                    Owner.Money += collidedWith.KillReward;
+                    _state = UnitState.WALKING;
+                    Velocity = speed;
+                    collidedWith = null;
+                }
+            }
+            else if (_state == UnitState.IDLE)
+            {
+                Velocity = Vector2.Zero;
+                if (collidedWith == null || collidedWith.State == UnitState.WALKING || collidedWith.Dead)
+                {
+                    _state = UnitState.WALKING;
+                    Velocity = speed;
+                    Mass = 1;
+                }
+            }
+        }
     }
 }

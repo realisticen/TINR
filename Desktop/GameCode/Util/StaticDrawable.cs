@@ -20,7 +20,12 @@ namespace Desktop.GameCode.Util
         public float LayerDepth { get; set; } = 0;
 
         public Sprite Sprite { get; set; }
-        public Rectangle DestinationRectangle { get; set; }
+        public virtual Rectangle DestinationRectangle { get; set; }
+
+        public StaticDrawable(Sprite sprite)
+        {
+            Sprite = sprite;
+        }
 
         public StaticDrawable(Sprite sprite, Point pos)
         {

@@ -7,19 +7,9 @@ using System.Threading.Tasks;
 
 namespace TINRGame.Components
 {
-    interface IPlayerInput
+    interface IUserInput
     {
-        bool playerMousePress();
-        Vector2 mousePosition { get; }
-        bool[] events { get; }
-        void Update(GameTime gameTime);
-    }
-
-    public enum PlayerInputEvent
-    {
-        MAIN_SCROLL_RIGHT,
-        MAIN_SCROLL_LEFT,
-        UNITS_SCROLL_RIGHT,
-        UNITS_SCROLL_LEFT
+        bool MousePressed { get; }
+        Point mousePosition { get; }
     }
 }

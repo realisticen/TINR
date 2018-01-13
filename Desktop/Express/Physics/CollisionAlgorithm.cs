@@ -18,7 +18,7 @@ namespace Desktop.Express.Physics
 
         }
 
-        public virtual void collisionBetween(T item1, U item2)
+        public void collisionBetween(T item1, U item2)
         {
             if (detectCollisionBetween(item1, item2))
             {

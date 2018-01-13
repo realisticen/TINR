@@ -12,11 +12,13 @@ namespace TINRGame
     class AnimatedSprite
     {
         public bool Loop { get; set; }
+        public bool Finished { get => runTime > duration; }
         public int duration { get; private set; }
 
         List<AnimatedSpriteFrame> frames = new List<AnimatedSpriteFrame>(3);
 
         int lastFrame = 0;
+        public int spriteOnStop = 0;
         double runTime = 0;
 
         /// <summary>
@@ -39,6 +41,11 @@ namespace TINRGame
 
         public Sprite getFirstFrame() { return frames[0].Sprite; }
 
+        public void reset()
+        {
+            runTime = 0;
+        }
+
         public Sprite getFrame(GameTime gameTime)
         {
             runTime += gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -53,7 +60,7 @@ namespace TINRGame
                     lastFrame = 0;
                 }
                 else
-                    return frames[frames.Count - 1].Sprite;
+                    return frames[spriteOnStop].Sprite;
             }
 
             for (int i = lastFrame; i < frames.Count; i++)
@@ -61,12 +68,11 @@ namespace TINRGame
                 if(frames[i].startTime > runTime)
                 {
                     lastFrame = i;
-                    Debug.WriteLine("Last frame: " + i);
                     return frames[i].Sprite;
                 }
             }
 
-            return frames[0].Sprite;
+            return frames[spriteOnStop].Sprite;
         }
     }
 }

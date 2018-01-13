@@ -47,6 +47,7 @@
     <Compile Include="Express\Graphics\Camera2D.cs" />
     <Compile Include="Express\Graphics\GameRenderer.cs" />
     <Compile Include="Express\Graphics\DebugRenderer.cs" />
+    <Compile Include="Express\Graphics\Animator.cs" />
     <Compile Include="Express\Graphics\Primitives2D.cs" />
     <Compile Include="Express\Graphics\Sprite.cs" />
     <Compile Include="Express\Math\AAHalfPlane.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Express\Scene\Objects\IHalfPlaneCollider.cs" />
     <Compile Include="Express\Scene\Objects\ICustomCollider.cs" />
     <Compile Include="Express\Scene\Objects\ILifetime.cs" />
+    <Compile Include="Express\Scene\Objects\IAnimatedSceneObject.cs" />
     <Compile Include="Express\Scene\Objects\IRotatable.cs" />
     <Compile Include="Express\Scene\Objects\IRectangleCollider.cs" />
     <Compile Include="Express\Scene\Objects\ISceneUser.cs" />
@@ -95,18 +97,28 @@
     <Compile Include="Express\Scene\SceneEventArgs.cs" />
     <Compile Include="Express\Scene\SimpleScene.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="GameCode\Components\UnitSpawner.cs" />
+    <Compile Include="GameCode\AI\Copy.cs" />
+    <Compile Include="GameCode\Components\GUILogic.cs" />
+    <Compile Include="GameCode\Components\GUIRender.cs" />
+    <Compile Include="GameCode\Components\MouseParticle.cs" />
     <Compile Include="GameCode\GamePlay.cs" />
+    <Compile Include="GameCode\GUI\Button.cs" />
+    <Compile Include="GameCode\GUI\Label.cs" />
     <Compile Include="GameCode\Input\DesktopInput.cs" />
     <Compile Include="GameCode\Input\IPlayerInput.cs" />
     <Compile Include="GameCode\Levels\Level.cs" />
     <Compile Include="GameCode\Levels\Level1.cs" />
     <Compile Include="GameCode\Units\BasicUnit.cs" />
+    <Compile Include="GameCode\Units\Coin.cs" />
     <Compile Include="GameCode\Units\MeleeStudent.cs" />
     <Compile Include="GameCode\Units\PlayerBase.cs" />
+    <Compile Include="GameCode\Units\IUnit.cs" />
+    <Compile Include="GameCode\Util\SoundEngine.cs" />
+    <Compile Include="GameCode\Util\AnimatedDrawable.cs" />
     <Compile Include="GameCode\Util\SpriteMaker.cs" />
     <Compile Include="GameCode\Util\StaticDrawable.cs" />
     <Compile Include="GameCode\Util\TextureLoader.cs" />
+    <Compile Include="GameCode\Util\UnitSpawner.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -173,9 +185,7 @@
   <ItemGroup>
     <Content Include="Express\Physics\ParticleConvexCollision.h" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GameCode\GamePlayRules\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
